@@ -11,9 +11,10 @@ public class Mano{
     	
     }
     
-    public void mostrarLista(Graphics gg, Applet a){
+    public void mostrarLista(Graphics gg, Applet a, int x, int y){
       for(int i=0; i<lista.size(); i++){
-		lista.get(i).setX(200+(i*30));
+		lista.get(i).setX(x+(i*30));
+		lista.get(i).setY(y);
    		lista.get(i).dibujar(gg, a);}
 
     }
@@ -37,6 +38,15 @@ public class Mano{
     	return acum;
     }
     
+    public boolean pasarse(){
+    	return (puntuacion()>21)?true:false;
+    	
+    }
+    
+    public boolean plantcrup(){
+    	return (puntuacion()>=17)?true:false;
+    	
+    }    
     
 }
 

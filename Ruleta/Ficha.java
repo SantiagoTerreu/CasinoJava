@@ -1,31 +1,36 @@
-import java.applet.Applet;
 import java.awt.*;
+import java.applet.*;
 
 public class Ficha extends Rectangle{
-
-	public static final int DIM=65;
+	public static final int DIM = 50;
+	int precio;
 	Image imagen;
-	int posicion;
-	boolean colocada=false;
-    public Ficha(Image imgs) {
-    	super((int)(Math.random() * 300)+360, (int)(Math.random() * 540), DIM, DIM);
-    	imagen = imgs;
+	java.util.List<Integer> numeros_apostados;
+    public Ficha(int posx, int posy, int v, Image img) {
+		super(posx, posy, DIM, DIM);
+    	precio = v;
+    	imagen = img;
+    	numeros_apostados = new java.util.ArrayList<Integer>();
+    }
 
+    public void dibujar(Graphics g, Applet a){
+		g.drawImage(imagen, x, y, width, height, a);
+		/*for(int i=0; i<numeros_apostados.size(); i++)
+			g.drawString("" + numeros_apostados.get(i), x + (i*10), y);
+		*/
     }
     
-    public void dibujar(Graphics gg, Applet a){
-    	gg.drawImage(imagen, x, y, width, height, a);
-    }   
+    public void actualizar(int posx, int posy){
+    	x = posx - (DIM/2);
+    	y = posy - (DIM/2);
+    }
     
-    public void setX(int posx){
-		x = posx-35;
-		
-	}
-	public void setY(int posy){
-		y = posy-35;
-		
-	}
+    public void cargar_apostados(Casilla casillas[][]){
+    	numeros_apostados.clear();
+    	for(int i=0; i<Ruleta.FILAS; i++)
+    		for(int j=0; j<Ruleta.COLUMNAS; j++)
+    			if(this.intersects(casillas[i][j]))
+    				numeros_apostados.add(new Integer(casillas[i][j].valor));
+    }
+    	
 }
-
-    
-    
