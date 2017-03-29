@@ -12,14 +12,24 @@ public class Carta{
     public Carta(Image imgs, int v) {  	
     	imagen = imgs;
     	valor=(v>10)?10:v;
-    		x=y=-200;
+    		y=100;
+    		x=100;
     	
     }
     
     public void dibujar(Graphics gg, Applet a){
     	gg.drawImage(imagen, x, y, anchura, altura, a);
-    }   
-    
+    	
+    }  
+    	 
+    public void setX (int px){
+    	x=px;
+    	px+=10;
+    }
+    public void setY (int py){
+    	y=py;
+    	py+=10;
+    }
 }
 
     
