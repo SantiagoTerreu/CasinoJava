@@ -5,6 +5,7 @@ public class Baraja{
 	
    public static final int CARTAS=52;
 	public static Carta cartas[];
+	public static int proxima=0;
    
 
     public Baraja(Image[] img) {  
@@ -27,8 +28,9 @@ public class Baraja{
     	
     }
     
-    public static void sacaCarta(){
+    public static Carta sacaCarta(){
     	
+    	return cartas[proxima++];
     	
     }
 }
